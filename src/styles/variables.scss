@@ -1,0 +1,73 @@
+:root {
+  --color-primary-100: #ffe4ec;
+  --color-primary-200: #fbcfe8;
+  --color-primary-300: #f9a8d4;
+  --color-primary-400: #f472b6;
+  --color-primary-500: #ec4899;
+  --color-primary-600: #db2777;
+  --color-primary-700: #be185d;
+  --color-primary-800: #9d174d;
+  --color-primary-900: #831843;
+
+  --color-secondary-100: #dbeafe;
+  --color-secondary-200: #bfdbfe;
+  --color-secondary-300: #93c5fd;
+  --color-secondary-400: #60a5fa;
+  --color-secondary-500: #3b82f6;
+  --color-secondary-600: #2563eb;
+  --color-secondary-700: #1d4ed8;
+  --color-secondary-800: #1e40af;
+  --color-secondary-900: #1e3a8a;
+
+  --color-neutral-100: #ffffff;
+  --color-neutral-200: #f5f5f5;
+  --color-neutral-300: #e5e5e5;
+  --color-neutral-400: #d4d4d4;
+  --color-neutral-500: #a3a3a3;
+  --color-neutral-600: #737373;
+  --color-neutral-700: #525252;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #000000;
+
+  --color-bg: var(--color-neutral-100);
+  --color-surface: var(--color-neutral-100);
+  --color-surface-alt: var(--color-neutral-200);
+  --color-border: var(--color-neutral-300);
+  --color-text: var(--color-neutral-900);
+  --color-text-muted: var(--color-neutral-600);
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-gradient-start: var(--color-bg);
+  --color-gradient-end: var(--color-secondary-100);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-sm: 0 2px 10px rgb(17 24 39 / 6%);
+  --shadow-md: 0 16px 32px rgb(59 130 246 / 12%);
+
+  --font-primary: "Roboto", sans-serif;
+}
+
+[data-theme="dark"] {
+  --color-bg: var(--color-neutral-900);
+  --color-surface: var(--color-neutral-800);
+  --color-surface-alt: var(--color-neutral-700);
+  --color-border: var(--color-neutral-700);
+  --color-text: var(--color-neutral-100);
+  --color-text-muted: var(--color-neutral-400);
+}

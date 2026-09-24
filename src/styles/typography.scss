@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 44px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+p {
+  color: var(--color-text-muted);
+}
