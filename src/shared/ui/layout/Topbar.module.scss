@@ -12,6 +12,12 @@
 .topbar__group {
   display: flex;
   align-items: center;
+  gap: 16px;
+}
+
+.sidebar__brand {
+  display: flex;
+  align-items: center;
   gap: 12px;
 }
 
@@ -27,6 +33,10 @@
   color: var(--color-text);
   font-size: 20px;
   cursor: pointer;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
 }
 
 .topbar__title-wrap {
@@ -54,27 +64,7 @@
   align-items: center;
 }
 
-.topbar__add-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid transparent;
-  border-radius: 12px;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary-600),
-    var(--color-secondary-600)
-  );
-  color: var(--color-neutral-100);
-  font-size: 24px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-@media (min-width: 768px) {
-  .topbar__menu-button {
-    display: none;
-  }
+.topbar__menu-button span {
+  display: block;
+  line-height: 1;
 }

@@ -3,4 +3,4 @@ export const navigationItems = [
   { label: "Tasks", href: "/tasks" },
   { label: "Projects", href: "/projects" },
   { label: "Search", href: "/search" },
-];
+] as const;

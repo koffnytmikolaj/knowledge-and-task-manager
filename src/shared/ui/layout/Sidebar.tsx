@@ -2,7 +2,8 @@
 
 import classNames from "classnames";
 import Link from "next/link";
-import { navigationItems } from "./navigation";
+import { usePathname } from "next/navigation";
+import { navigationItems } from "shared/config/navigation";
 import styles from "./Sidebar.module.scss";
 
 type SidebarProps = {
@@ -11,6 +12,8 @@ type SidebarProps = {
 };
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+  const pathname = usePathname();
+
   return (
     <>
       <aside
@@ -21,25 +24,26 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         )}
         aria-label="Main navigation"
       >
-        <div className={styles.sidebar__brand}>
-          <div className={styles.sidebar__logo}>AI</div>
-          <div>
-            <p className={styles.sidebar__title}>AI Manager</p>
-            <p className={styles.sidebar__subtitle}>Workspace</p>
-          </div>
-        </div>
-
         <nav className={styles.sidebar__nav} aria-label="Sidebar navigation">
-          {navigationItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={styles.sidebar__link}
-              onClick={onClose}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navigationItems.map((item) => {
+            const isActive =
+              pathname === item.href || pathname.startsWith(`${item.href}/`);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={classNames(
+                  styles.sidebar__link,
+                  isActive && styles["sidebar__link--active"],
+                )}
+                aria-current={isActive ? "page" : undefined}
+                onClick={onClose}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
       </aside>
 

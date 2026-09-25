@@ -1,6 +1,9 @@
 "use client";
 
+import Link from "next/link";
+import BrandMark from "./BrandMark";
 import styles from "./Topbar.module.scss";
+import { usePathname } from "next/navigation";
 
 type TopbarProps = {
   isSidebarOpen: boolean;
@@ -8,9 +11,26 @@ type TopbarProps = {
 };
 
 export default function Topbar({ isSidebarOpen, onMenuClick }: TopbarProps) {
+  const pathname = usePathname();
+
   return (
     <header className={styles.topbar}>
       <div className={styles.topbar__group}>
+        <Link
+          href="/"
+          className={styles.sidebar__brand}
+          aria-label="Go to homepage"
+          aria-current={pathname === "/" ? "page" : undefined}
+        >
+          <BrandMark />
+          <div>
+            <p className={styles.topbar__kicker}>Workspace</p>
+            <h2 className={styles.topbar__title}>Overview</h2>
+          </div>
+        </Link>
+      </div>
+
+      <div className={styles.topbar__actions}>
         <button
           type="button"
           className={styles["topbar__menu-button"]}
@@ -19,22 +39,7 @@ export default function Topbar({ isSidebarOpen, onMenuClick }: TopbarProps) {
           aria-expanded={isSidebarOpen}
           onClick={onMenuClick}
         >
-          ☰
-        </button>
-
-        <div className={styles["topbar__title-wrap"]}>
-          <p className={styles.topbar__kicker}>Workspace</p>
-          <h2 className={styles.topbar__title}>Overview</h2>
-        </div>
-      </div>
-
-      <div className={styles.topbar__actions}>
-        <button
-          type="button"
-          className={styles["topbar__add-button"]}
-          aria-label="Create new item"
-        >
-          +
+          <span aria-hidden="true">☰</span>
         </button>
       </div>
     </header>

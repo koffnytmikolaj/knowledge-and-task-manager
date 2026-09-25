@@ -15,8 +15,6 @@ export default function Shell({ children }: ShellProps) {
 
   return (
     <div className={styles.shell}>
-      <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
-
       <div className={styles.main}>
         <Topbar
           isSidebarOpen={isSidebarOpen}
@@ -25,6 +23,7 @@ export default function Shell({ children }: ShellProps) {
 
         <main className={styles.content}>{children}</main>
       </div>
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
     </div>
   );
 }
