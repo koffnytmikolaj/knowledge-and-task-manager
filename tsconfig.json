@@ -20,6 +20,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "domain": ["./src/domain"],
+      "domain/*": ["./src/domain/*"],
       "shared": ["./src/shared"],
       "shared/*": ["./src/shared/*"],
       "styles": ["./src/styles"],
