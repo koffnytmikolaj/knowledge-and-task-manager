@@ -18,7 +18,7 @@ export default function Topbar({ isSidebarOpen, onMenuClick }: TopbarProps) {
       <div className={styles.topbar__group}>
         <Link
           href="/"
-          className={styles.sidebar__brand}
+          className={styles.topbar__brand}
           aria-label="Go to homepage"
           aria-current={pathname === "/" ? "page" : undefined}
         >
