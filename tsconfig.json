@@ -22,6 +22,8 @@
       "@/*": ["./src/*"],
       "domain": ["./src/domain"],
       "domain/*": ["./src/domain/*"],
+      "infrastructure": ["./src/infrastructure"],
+      "infrastructure/*": ["./src/infrastructure/*"],
       "modules": ["./src/modules"],
       "modules/*": ["./src/modules/*"],
       "shared": ["./src/shared"],

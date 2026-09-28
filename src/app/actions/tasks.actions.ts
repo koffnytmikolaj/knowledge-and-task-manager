@@ -1,11 +1,24 @@
 "use server";
 
-import { createTask, type CreateTaskInput } from "modules/tasks/createTask";
-import { updateTaskStatus } from "modules/tasks/updateTaskStatus";
+import type { Task as DbTask } from "@prisma/client";
 import type { TaskStatus } from "domain/task";
+import { db } from "infrastructure/db/prisma";
+import { updateTaskStatus } from "modules/tasks/updateTaskStatus";
 
-export async function createTaskAction(input: CreateTaskInput) {
-  return createTask(input);
+type CreateTaskActionInput = {
+  title: string;
+};
+
+export async function createTaskAction(
+  input: CreateTaskActionInput,
+): Promise<DbTask> {
+  return db.task.create({
+    data: {
+      title: input.title,
+      status: "TODO",
+      priority: 3,
+    },
+  });
 }
 
 export async function updateTaskStatusAction(input: {
