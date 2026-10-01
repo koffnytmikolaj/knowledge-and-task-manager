@@ -1,7 +1,0 @@
-model Task {
-  id        String   @id @default(uuid())
-  title     String
-  status    String
-  priority  Int
-  createdAt DateTime @default(now())
-}
