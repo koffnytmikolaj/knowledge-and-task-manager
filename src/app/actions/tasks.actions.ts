@@ -16,7 +16,7 @@ export async function createTaskAction(
     data: {
       title: input.title,
       status: "TODO",
-      priority: 3,
+      priority: "MEDIUM",
     },
   });
 }

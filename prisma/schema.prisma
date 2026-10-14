@@ -12,22 +12,61 @@ datasource db {
 }
 
 model Note {
-  id        String   @id @default(uuid())
-  title     String
-  content   String
+  id        String   @id @default(uuid()) @db.Uuid
+  title     String   @db.VarChar(200)
+  content   String   @db.Text
+  projectId String?  @db.Uuid
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  project Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  tasks   Task[]
+
+  @@index([projectId])
+  @@index([updatedAt])
 }
 
 model Project {
-  id        String   @id @default(uuid())
-  name      String
-  createdAt DateTime @default(now())
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String   @db.VarChar(200)
+  description String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  notes Note[]
+  tasks Task[]
+
+  @@index([updatedAt])
 }
 
 model Task {
-  id        String   @id @default(uuid())
-  title     String
-  status    String
-  priority  Int
-  createdAt DateTime @default(now())
+  id        String       @id @default(uuid()) @db.Uuid
+  title     String       @db.VarChar(200)
+  status    TaskStatus   @default(TODO)
+  priority  TaskPriority @default(MEDIUM)
+  projectId String?      @db.Uuid
+  noteId    String?      @db.Uuid
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  project Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  note    Note?    @relation(fields: [noteId], references: [id], onDelete: SetNull)
+
+  @@index([projectId])
+  @@index([noteId])
+  @@index([status])
+  @@index([priority])
+  @@index([updatedAt])
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
 }
