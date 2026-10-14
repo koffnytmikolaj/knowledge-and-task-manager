@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "db:generate": "prisma generate --schema=src/infrastructure/db/schema",
-    "db:validate": "prisma validate --schema=src/infrastructure/db/schema",
-    "db:migrate": "prisma migrate dev --schema=src/infrastructure/db/schema"
+    "db:generate": "prisma generate",
+    "db:validate": "prisma validate",
+    "db:migrate": "prisma migrate dev"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.10.0",
