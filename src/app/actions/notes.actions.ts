@@ -1,20 +1,20 @@
 "use server";
 
-import type { Note as DbNote } from "@prisma/client";
-import { db } from "infrastructure/db/prisma";
+import type { Note } from "domain/note/Note";
+import { PrismaNoteRepository } from "infrastructure/repositories/PrismaNoteRepository";
+import { createNote } from "modules/notes/createNote";
+
+const noteRepository = new PrismaNoteRepository();
 
 type CreateNoteActionInput = {
   title: string;
   content: string;
+  projectId?: string;
 };
 
 export async function createNoteAction(
   input: CreateNoteActionInput,
-): Promise<DbNote> {
-  return db.note.create({
-    data: {
-      title: input.title,
-      content: input.content,
-    },
-  });
+): Promise<Note> {
+  const result = await createNote(input, noteRepository);
+  return result.note;
 }

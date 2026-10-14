@@ -1,10 +1,12 @@
 import { Rules } from "domain/rules";
 import type { Note } from "domain/note/Note";
 import { normalizeNoteTitle } from "domain/note/NoteRules";
+import type { NoteRepository } from "./NoteRepository";
 
 export type CreateNoteInput = {
   title: string;
   content: string;
+  projectId?: string;
 };
 
 export type CreateNoteResult = {
@@ -12,17 +14,16 @@ export type CreateNoteResult = {
   aiTriggered: boolean;
 };
 
-export function createNote(input: CreateNoteInput): CreateNoteResult {
+export async function createNote(
+  input: CreateNoteInput,
+  repository: NoteRepository,
+): Promise<CreateNoteResult> {
   const title = normalizeNoteTitle(input.title);
-  const now = new Date();
-
-  const note: Note = {
-    id: crypto.randomUUID(),
+  const note: Note = await repository.create({
     title,
     content: input.content,
-    createdAt: now,
-    updatedAt: now,
-  };
+    ...(input.projectId === undefined ? {} : { projectId: input.projectId }),
+  });
 
   return {
     note,
