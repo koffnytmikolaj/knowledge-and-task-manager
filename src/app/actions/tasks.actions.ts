@@ -1,7 +1,7 @@
 "use server";
 
 import type { Task as DbTask } from "@prisma/client";
-import type { TaskStatus } from "domain/task";
+import type { TaskStatus } from "domain/task/Task";
 import { db } from "infrastructure/db/prisma";
 import { updateTaskStatus } from "modules/tasks/updateTaskStatus";
 

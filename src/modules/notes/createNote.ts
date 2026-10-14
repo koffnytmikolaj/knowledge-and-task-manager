@@ -1,5 +1,5 @@
 import { Rules } from "domain/rules";
-import type { Note } from "domain/note";
+import type { Note } from "domain/note/Note";
 
 export type CreateNoteInput = {
   title: string;
@@ -17,6 +17,7 @@ export function createNote(input: CreateNoteInput): CreateNoteResult {
     title: input.title,
     content: input.content,
     createdAt: new Date(),
+    updatedAt: new Date(),
   };
 
   return {

@@ -1,4 +1,4 @@
-import type { Task } from "domain/task";
+import type { Task } from "domain/task/Task";
 
 export type CreateTaskInput = {
   title: string;
@@ -9,7 +9,8 @@ export function createTask(input: CreateTaskInput): Task {
     id: crypto.randomUUID(),
     title: input.title,
     status: "TODO",
-    priority: 3,
+    priority: "MEDIUM",
     createdAt: new Date(),
+    updatedAt: new Date(),
   };
 }

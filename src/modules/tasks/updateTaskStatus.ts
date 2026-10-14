@@ -1,11 +1,11 @@
-import { Rules } from "domain/rules";
-import type { TaskStatus } from "domain/task";
+import { canChangeTaskStatus } from "domain/task/TaskRules";
+import type { TaskStatus } from "domain/task/Task";
 
 export function updateTaskStatus(
   current: TaskStatus,
   next: TaskStatus,
 ): TaskStatus {
-  if (!Rules.canChangeTaskStatus(current, next)) {
+  if (!canChangeTaskStatus(current, next)) {
     throw new Error("Invalid status transition");
   }
 
